@@ -1,0 +1,21 @@
+# 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.
+# array = [1, 5, 2, 6, 7, 4]
+# commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]]
+
+def solution(array, commands):
+    
+    answer = []
+    for i in range(len(commands)):
+        
+        arr = array[commands[i][0]-1:commands[i][1]] 
+        # array[1:5] -- > [5 2 6 3]
+        
+        arr.sort() # 정렬
+        # [2 3 5 6]
+        
+        answer.append(arr[commands[i][2]-1])
+        # 3번째 수인 [5]가 anwer에 append
+    
+    return answer
+    
+# answer = [5, 6, 3]
