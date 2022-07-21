@@ -1,0 +1,28 @@
+def solution(progresses, speeds):
+    answer = []
+    day = 0
+    count = 0
+    
+    while len(progresses) > 0 :
+        if (progresses[0] + day*speeds[0]) >= 100:
+            ## 작업진도가 100 이상이면
+            progresses.pop(0)
+            speeds.pop(0)
+            ## 진도율이랑, 속도 삭제
+            count += 1
+            ## 배포 개수 1 증가
+        else:
+            ## 작업진도가 100 이하인 경우
+            if count > 0:
+                ## 그러나 배포개수가 1이상이면
+                answer.append(count)
+                ## answer에 배포개수 저장
+                count = 0
+                ## 다시 카운트해야하므로 초기화
+                
+            day += 1
+            ## 작업 일수에 하루 더함
+        
+    answer.append(count)
+    
+    return answer
